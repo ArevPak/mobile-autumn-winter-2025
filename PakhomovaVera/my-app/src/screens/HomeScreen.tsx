@@ -26,36 +26,36 @@ export const HomeScreen: React.FC = () => {
     },
     {
       id: 1,
-      title: 'Лаб. 1: UseState',
+      title: 'UseState',
       subtitle: 'Управление состоянием компонентов',
       screen: 'Login' as keyof RootStackParamList,
       color: '#007AFF',
       icon: '🔄',
     },
-    {
+    /*{
       id: 2,
       title: 'Лаб. 2: UseEffect', 
       subtitle: 'Загрузка данных из внешних источников',
       screen: 'Todo' as keyof RootStackParamList,
       color: '#34C759',
       icon: '📡',
-    },
+    },*/
     {
       id: 3,
-      title: 'Лаб. 3: UseMemo',
+      title: 'UseMemo',
       subtitle: 'Оптимизация вычислений',
       screen: 'Advanced' as keyof RootStackParamList,
       color: '#FF9500',
       icon: '⚡',
     },
-    {
+    /*{
       id: 6,
       title: 'Лаб. 6: Zustand',
       subtitle: 'Глобальное состояние приложения',
       screen: 'ZustandLab' as keyof RootStackParamList,
       color: '#AF52DE',
       icon: '🏪',
-    },
+    },*/
     {
       id: 7,
       title: 'Посты',

@@ -155,12 +155,31 @@ export const PostsScreen: React.FC = () => {
       minute: '2-digit',
     });
   };
+  const isCurrentUserAuthor = (post: Post) => {
+    // Проверяем, что пользователь авторизован
+    if (!authState.isAuthenticated || !authState.user) return false;
 
-  const renderPost = ({ item }: { item: Post }) => (
+    if ((!authState.isAuthenticated || !authState.user)) return false;
+    if (post.author && post.author.id) {
+      return post.author.id === authState.user.id;
+    }
+    
+    // Если в посте есть поле authorId
+    if (post.authorId) {
+      return post.authorId === authState.user.id;
+    }
+    return false;
+  };
+
+  const renderPost = ({ item }: { item: Post }) => {
+
+    const userIsAuthor = isCurrentUserAuthor(item);
+
+    return(
     <View style={styles.postCard}>
       <View style={styles.postHeader}>
         <Text style={styles.postTitle}>{item.title}</Text>
-        {authState.isAuthenticated && (
+        {userIsAuthor && (
           <View style={styles.actions}>
             <TouchableOpacity
               onPress={() => handleEdit(item)}
@@ -187,7 +206,8 @@ export const PostsScreen: React.FC = () => {
         <Text style={styles.postDate}>{formatDate(item.createdAt)}</Text>
       </View>
     </View>
-  );
+    );
+  };
 
   return (
     <View style={styles.container}>
